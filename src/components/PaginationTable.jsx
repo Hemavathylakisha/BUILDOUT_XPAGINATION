@@ -54,7 +54,7 @@ const PaginationTable = () => {
         </thead>
         <tbody>
           {currentData.map((employee, index) => (
-            <tr key={employee.id} data-testid={`row-${index}`}>
+            <tr key={employee.id} data-testid={`row-${index}`} data-id={employee.id}>
               <td>{employee.id}</td>
               <td>{employee.name}</td>
               <td>{employee.email}</td>
@@ -65,25 +65,23 @@ const PaginationTable = () => {
       </table>
 
       <div style={{ marginTop: "20px" }}>
-        <button
-          onClick={handlePrevious}
-          disabled={currentPage === 1}
-          data-testid="previous-button"
-        >
-          Previous
-        </button>
+       <button
+            onClick={handlePrevious}
+            disabled={currentPage === 1}
+            data-testid="previous-button"
+          >
+            Previous
+          </button>
 
-        <span style={{ margin: "0 15px" }} data-testid="current-page">
-          Page {currentPage}
-        </span>
+          <span data-testid="current-page">Page {currentPage}</span>
 
-        <button
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-          data-testid="next-button"
-        >
-          Next
-        </button>
+          <button
+            onClick={handleNext}
+            disabled={currentPage === totalPages}
+            data-testid="next-button"
+          >
+            Next
+          </button>
       </div>
     </div>
   );
