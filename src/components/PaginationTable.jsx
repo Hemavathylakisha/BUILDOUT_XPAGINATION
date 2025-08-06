@@ -17,7 +17,8 @@ const PaginationTable = () => {
         const json = await res.json();
         setData(json);
       } catch (err) {
-        alert("failed to fetch data",err);
+        alert("failed to fetch data");
+        console.error("Error fetching data:", err);
         setError(true);
       }
     };
@@ -52,8 +53,8 @@ const PaginationTable = () => {
           </tr>
         </thead>
         <tbody>
-          {currentData.map((employee) => (
-            <tr key={employee.id}>
+          {currentData.map((employee, index) => (
+            <tr key={employee.id} data-testid={`row-${index}`}>
               <td>{employee.id}</td>
               <td>{employee.name}</td>
               <td>{employee.email}</td>
@@ -63,15 +64,27 @@ const PaginationTable = () => {
         </tbody>
       </table>
 
-     <div>
-      <button onClick={handlePrevious} disabled={currentPage === 1}>
-        Previous
-      </button>
-      <span>Page {currentPage}</span>
-      <button onClick={handleNext} disabled={currentPage === totalPages}>
-        Next
-      </button>
-    </div>
+      <div style={{ marginTop: "20px" }}>
+        <button
+          onClick={handlePrevious}
+          disabled={currentPage === 1}
+          data-testid="previous-button"
+        >
+          Previous
+        </button>
+
+        <span style={{ margin: "0 15px" }} data-testid="current-page">
+          Page {currentPage}
+        </span>
+
+        <button
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+          data-testid="next-button"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
