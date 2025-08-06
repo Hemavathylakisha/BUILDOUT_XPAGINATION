@@ -63,15 +63,15 @@ const PaginationTable = () => {
         </tbody>
       </table>
 
-      <div style={{ marginTop: "20px", textAlign: "center" }}>
-        <button onClick={handlePrevious} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span style={{ margin: "0 15px" }}>Page {currentPage}</span>
-        <button onClick={handleNext} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+     <div>
+      <button onClick={handlePrevious} disabled={currentPage === 1}>
+        Previous
+      </button>
+      <span>Page {currentPage}</span>
+      <button onClick={handleNext} disabled={currentPage === totalPages}>
+        Next
+      </button>
+    </div>
     </div>
   );
 };
