@@ -66,22 +66,20 @@ const PaginationTable = () => {
 
       <div style={{ marginTop: "20px" }}>
        <button
-            onClick={handlePrevious}
-            disabled={currentPage === 1}
-            data-testid="previous-button"
-          >
-            Previous
-          </button>
+  onClick={handlePrevious}
+  disabled={currentData.length === 0 || currentPage <= 1}
+  data-testid="pagination-previous"
+>
+  Previous
+</button>
 
-          <span data-testid="current-page">Page {currentPage}</span>
-
-          <button
-            onClick={handleNext}
-            disabled={currentPage === totalPages}
-            data-testid="next-button"
-          >
-            Next
-          </button>
+<button
+  onClick={handleNext}
+  disabled={currentData.length === 0 || currentPage >= totalPages}
+  data-testid="pagination-next"
+>
+Next
+</button>
       </div>
     </div>
   );
